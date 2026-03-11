@@ -4,15 +4,15 @@ using UnityEngine.InputSystem;
 public class MovementScript : MonoBehaviour
 {
 
-    public float speed;
+    private float speed = 1; 
     private Rigidbody2D _rb;
     private Vector2 moveInput;
     private Animator _animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D> ();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
