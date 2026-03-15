@@ -17,6 +17,6 @@ public class ColorObserver : MonoBehaviour, IObserver
     public void OnNotify()
     {
         // Change shader color
-        rend.material.SetColor("_TargetColor", Color.green);
+        rend.material.SetColor("_TargetColor", new Color(34f/255f, 185f/255f, 42f/255f, 1f));
     }
 }
