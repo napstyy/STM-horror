@@ -8,7 +8,7 @@ public class MapTransition : MonoBehaviour
     [SerializeField]private PolygonCollider2D mapBoundary;
     private CinemachineConfiner2D confiner;
     [SerializeField]private Direction direction;
-    [SerializeField]private float additivePos = 2f;
+   
 
     private enum Direction {Up, Down, Left, Right}
 

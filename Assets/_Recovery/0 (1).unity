@@ -1036,9 +1036,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220295623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6ddb6aafeadbb4f8da5b9bae892e3e, type: 3}
+  m_Script: {fileID: 11500000, guid: a2d31c66b1da77a4894119be959200fd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LightObserver
+  m_EditorClassIdentifier: '::'
   subject: {fileID: 921555919}
 --- !u!1 &1236070139
 GameObject:

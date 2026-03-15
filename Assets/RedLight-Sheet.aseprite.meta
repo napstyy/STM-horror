@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b97b76747198804f8ca9305721a5b18
+guid: 923ec6bdb4dba8945a22a1bdbe0c38fd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: RedLight
+  - name: RedLight-Sheet
     originalName: 
     pivot: {x: -0.33333334, y: -0.3888889}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 12
       height: 18
-    spriteID: eff04bae2914f89409cdece5a7cfc0b6
+    spriteID: 90c4d0840f190294195f9eeaa2c912de
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,31 +147,31 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: -16, y: -3}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2002335533
+      value0: 1259049539
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: RedLight
+    name: RedLight-Sheet
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: RedLight
+    - name: RedLight-Sheet
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 7
-        width: 12
-        height: 18
-      spriteId: eff04bae2914f89409cdece5a7cfc0b6
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      spriteId: 90c4d0840f190294195f9eeaa2c912de
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
