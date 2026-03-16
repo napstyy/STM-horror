@@ -1,10 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PanelSubject : MonoBehaviour, ISubject
 {
     private List<IObserver> observers = new List<IObserver>();
-
+    public InteractPrompt prompt;
+    private bool playerInRange = false;
+    
+     
+    private void Start()
+    {
+        AddObserver(prompt);
+    }
     public void AddObserver(IObserver observer)
     {
         observers.Add(observer);
@@ -26,8 +34,17 @@ public class PanelSubject : MonoBehaviour, ISubject
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player activated control panel");
-            NotifyObservers();
+            playerInRange = true;
+            NotifyObservers(); // show prompt
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+            prompt.HidePrompt();
         }
     }
 }
