@@ -2,7 +2,14 @@ using UnityEngine;
 
 public interface ISubject
 {
-    void AddObserver(IObserver observer);
-    void RemoveObserver(IObserver observer);
-    void NotifyObservers();
+    void AddPromptObserver(IObserver observer);
+    void RemovePromptObserver(IObserver observer);
+
+    // Interact observers (press E / change color)
+    void AddInteractObserver(IObserver observer);
+    void RemoveInteractObserver(IObserver observer);
+
+    // Notify functions
+    void NotifyPromptObservers();
+    void NotifyInteractObservers();
 }

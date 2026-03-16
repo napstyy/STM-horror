@@ -8,7 +8,8 @@ public class MovementScript : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 moveInput;
     private Animator _animator;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private PanelSubject currentPanel;
+    
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D> ();
@@ -23,6 +24,26 @@ public class MovementScript : MonoBehaviour
 
         
     }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed && currentPanel != null)
+        {
+            // This triggers the interaction observers (e.g., ColorObserver)
+            currentPanel.NotifyInteractObservers();
+        }
+    }
+    
+    public void SetInteractable(PanelSubject panel)
+    {
+        currentPanel = panel;
+    }
+
+    public void ClearInteractable()
+    {
+        currentPanel = null;
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
 
     public void Move(InputAction.CallbackContext context)
     {

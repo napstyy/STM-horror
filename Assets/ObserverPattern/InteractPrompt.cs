@@ -13,12 +13,18 @@ public class InteractPrompt : MonoBehaviour, IObserver
 
     public void OnNotify()
     {
-        sprite.enabled = true;
+        if (sprite != null)
+        {
+            sprite.enabled = true;
+        }
     }
 
     public void HidePrompt()
     {
-        sprite.enabled = false;
+        if (sprite != null)
+        {
+            sprite.enabled = false;
+        }
     }
     
     

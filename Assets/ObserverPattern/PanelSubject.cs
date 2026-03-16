@@ -1,41 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PanelSubject : MonoBehaviour, ISubject
 {
-    private List<IObserver> observers = new List<IObserver>();
+    private List<IObserver> promptObservers = new List<IObserver>();
+    private List<IObserver> interactObservers = new List<IObserver>();
+
     public InteractPrompt prompt;
-    private bool playerInRange = false;
-    
-     
+
     private void Start()
     {
-        AddObserver(prompt);
-    }
-    public void AddObserver(IObserver observer)
-    {
-        observers.Add(observer);
-    }
-
-    public void RemoveObserver(IObserver observer)
-    {
-        observers.Remove(observer);
+        if (prompt != null)
+        {
+            AddPromptObserver(prompt);
+        }
     }
 
-    public void NotifyObservers()
+    public void AddPromptObserver(IObserver observer)
     {
-        foreach (var observer in observers)
+        promptObservers.Add(observer);
+    }
+
+    public void AddInteractObserver(IObserver observer)
+    {
+        interactObservers.Add(observer);
+    }
+
+    public void RemovePromptObserver(IObserver observer)
+    {
+        promptObservers.Remove(observer);
+    }
+
+    public void RemoveInteractObserver(IObserver observer)
+    {
+        interactObservers.Remove(observer);
+    }
+
+    public void NotifyPromptObservers()
+    {
+        foreach (var observer in promptObservers)
         {
             observer.OnNotify();
         }
     }
+
+    public void NotifyInteractObservers()
+    {
+        foreach (var observer in interactObservers)
+        {
+            observer.OnNotify();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = true;
-            NotifyObservers(); // show prompt
+            MovementScript player = collision.GetComponent<MovementScript>();
+
+            if (player != null)
+            {
+                player.SetInteractable(this);
+            }
+
+            NotifyPromptObservers(); // show the "E" prompt
         }
     }
 
@@ -43,8 +71,17 @@ public class PanelSubject : MonoBehaviour, ISubject
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = false;
-            prompt.HidePrompt();
+            MovementScript player = collision.GetComponent<MovementScript>();
+
+            if (player != null)
+            {
+                player.ClearInteractable();
+            }
+
+            if (prompt != null)
+            {
+                prompt.HidePrompt();
+            }
         }
     }
 }
