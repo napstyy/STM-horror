@@ -48,6 +48,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _OriginalColor: {r: 0.7075472, g: 0.31706125, b: 0.31706125, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TargetColor: {r: 0.754717, g: 0.16614163, b: 0.16019939, a: 1}
+    - _TargetColor: {r: 0.7924528, g: 0.19462276, b: 0.19063722, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
