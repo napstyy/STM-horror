@@ -1796,7 +1796,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405209190}
-  - component: {fileID: 1405209192}
   - component: {fileID: 1405209194}
   - component: {fileID: 1405209193}
   - component: {fileID: 1405209195}
@@ -1823,18 +1822,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2114798132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1405209192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405209189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73696d3416eb90a42973e272178a6b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovementScript
 --- !u!114 &1405209193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,8 +1913,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2114798133}
-        m_TargetAssemblyTypeName: MovementScript, Assembly-CSharp
+      - m_Target: {fileID: 2114798135}
+        m_TargetAssemblyTypeName: InteractionObserver, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -6834,6 +6821,7 @@ GameObject:
   - component: {fileID: 2114798129}
   - component: {fileID: 2114798133}
   - component: {fileID: 2114798134}
+  - component: {fileID: 2114798135}
   m_Layer: 0
   m_Name: Froggy
   m_TagString: Player
@@ -6915,6 +6903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73696d3416eb90a42973e272178a6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementScript
+  speed: 1
 --- !u!50 &2114798134
 Rigidbody2D:
   serializedVersion: 5
@@ -6942,6 +6931,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2114798135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114798126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58dd9945fbaaaa4dbef60875626fa1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionObserver
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -10,78 +10,55 @@ public class PanelSubject : MonoBehaviour, ISubject
 
     private void Start()
     {
+        // 1️⃣ Add the prompt observer if assigned
         if (prompt != null)
-        {
             AddPromptObserver(prompt);
+
+        // 2️⃣ Auto-register all IObservers on this object except the prompt
+        foreach (var observer in GetComponents<IObserver>())
+        {
+            if (observer != prompt)
+                AddInteractObserver(observer);
         }
     }
 
-    public void AddPromptObserver(IObserver observer)
-    {
-        promptObservers.Add(observer);
-    }
-
-    public void AddInteractObserver(IObserver observer)
-    {
-        interactObservers.Add(observer);
-    }
-
-    public void RemovePromptObserver(IObserver observer)
-    {
-        promptObservers.Remove(observer);
-    }
-
-    public void RemoveInteractObserver(IObserver observer)
-    {
-        interactObservers.Remove(observer);
-    }
+    public void AddPromptObserver(IObserver observer) => promptObservers.Add(observer);
+    public void AddInteractObserver(IObserver observer) => interactObservers.Add(observer);
+    public void RemovePromptObserver(IObserver observer) => promptObservers.Remove(observer);
+    public void RemoveInteractObserver(IObserver observer) => interactObservers.Remove(observer);
 
     public void NotifyPromptObservers()
     {
         foreach (var observer in promptObservers)
-        {
             observer.OnNotify();
-        }
     }
 
     public void NotifyInteractObservers()
     {
         foreach (var observer in interactObservers)
-        {
             observer.OnNotify();
-        }
     }
 
+    // Trigger detection
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            MovementScript player = collision.GetComponent<MovementScript>();
+        if (!collision.CompareTag("Player")) return;
 
-            if (player != null)
-            {
-                player.SetInteractable(this);
-            }
+        InteractionObserver player = collision.GetComponent<InteractionObserver>();
+        if (player != null)
+            player.SetInteractable(this);
 
-            NotifyPromptObservers(); // show the "E" prompt
-        }
+        NotifyPromptObservers(); // show prompt
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            MovementScript player = collision.GetComponent<MovementScript>();
+        if (!collision.CompareTag("Player")) return;
 
-            if (player != null)
-            {
-                player.ClearInteractable();
-            }
+        InteractionObserver player = collision.GetComponent<InteractionObserver>();
+        if (player != null)
+            player.ClearInteractable();
 
-            if (prompt != null)
-            {
-                prompt.HidePrompt();
-            }
-        }
+        prompt?.HidePrompt();
     }
 }
